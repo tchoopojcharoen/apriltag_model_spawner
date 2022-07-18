@@ -5,7 +5,7 @@ from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import PathJoinSubstitution
 def id_argument(ID):
-    return {'entity': 'tag_'+ID,'file': 'april_tag_'+ID}
+    return {'entity': 'Apriltag36_11_000'+ID,'file': 'Apriltag36_11_000'+ID}
 def generate_launch_description():
     
     gazebo_server = IncludeLaunchDescription(
@@ -27,10 +27,10 @@ def generate_launch_description():
         ])
     )
 
-    
+    """
     launch_arg_dict = {'z': '0.5'}
-    launch_arg_dict.update(id_argument('00'))
-    single_spawner_00 = IncludeLaunchDescription(
+    launch_arg_dict.update(id_argument('15'))
+    single_spawner_15 = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
                 FindPackageShare('april_tag_spawner'),
@@ -40,13 +40,13 @@ def generate_launch_description():
         ]),
         launch_arguments=launch_arg_dict.items()
     )
-      
+    """  
 
     launch_description = LaunchDescription()
     launch_description.add_action(gazebo_server)
     launch_description.add_action(gazebo_client)
 
-    """
+    
     for i in range(3):
         launch_arg_dict = {'z': '0.5','y': str(i*0.5)}
         launch_arg_dict.update(id_argument('0'+str(i)))
@@ -62,8 +62,8 @@ def generate_launch_description():
         )
         launch_description.add_action(spawner)
 
-    """
-    launch_description.add_action(single_spawner_00)
+    
+    #launch_description.add_action(single_spawner_00)
     return launch_description
 
     

@@ -27,6 +27,7 @@ find_package(rclpy REQUIRED)                	# python (optional)
 ################ INSTALL LAUNCH, ETC #################
 install(DIRECTORY
   launch
+  models
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
